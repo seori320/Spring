@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan base-package="com.spring.springproject" />
+	
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/blogviews/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- 
+		handler mapping 설정
+		사용자의요청에 대해서 컨트롤러를 맵핑하는 역할을 수행
+	 -->
+	 <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	 	<property name="mappings">
+	 		<props>
+	 			<prop key="/getBlogList.do"> getBlogList </prop>
+	 			<prop key="/getBlog.do"> getBlog </prop>
+	 			<prop key="/modifyBlog.do"> modifyBlog </prop>
+	 			<prop key="/modifyBlogProc.do"> modifyBlogProc </prop> 			
+	 			<prop key="/deleteBlog.do"> deleteBlog </prop>
+	 			<prop key="/insertBlog.do"> insertBlog </prop>
+	 			<prop key="/insertBlogProc.do"> insertBlogProc </prop>	
+	 			<prop key="/login.do"> login </prop>		
+	 			<prop key="/logout.do"> logout </prop>
+	 		</props>
+	 	</property>
+	 </bean>	 
+	 <!-- 컨트롤러 등록  -->
+	 <bean id="getBlogList" 
+	 	   class="com.spring.springProject.controller.GetBlogListController"/>
+   	 <bean id="getBlog" 
+	 	   class="com.spring.springProject.controller.GetBlogController"/>
+     <bean id="modifyBlog" 
+	 	   class="com.spring.springProject.controller.ModifyBlogController"/>
+	 <bean id="modifyBlogProc" 
+	 	   class="com.spring.springProject.controller.ModifyBlogProcController"/>
+	 <bean id="deleteBlog" 
+	 	   class="com.spring.springProject.controller.DeleteBlogController"/>
+   	 <bean id="insertBlog" 
+	 	   class="com.spring.springProject.controller.InsertBlogController"/>	
+     <bean id="insertBlogProc" 
+	 	   class="com.spring.springProject.controller.InsertBlogProcController"/>
+	 <bean id="login" 
+	 	   class="com.spring.springProject.controller.LoginController"/>
+	 <bean id="logout" 
+	 	   class="com.spring.springProject.controller.LogoutController"/>
+
+</beans>
